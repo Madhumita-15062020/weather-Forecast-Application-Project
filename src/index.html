@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="output.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="  crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   
+    <title>Weather Forecast Application</title>
+    <link rel="icon" href="./public/images/weather-app.png" type="image/x-icon">
+ </head>
+<body class="font-poppins">
+   <!-- header -->
+   <header class="flex flex-col justify-center items-center h-20">
+         <h1 class=" bg-sky-900 text-2xl text-white font-bold  ml-4 md:text-4xl md:ml-10 m-2 rounded-md mt-8 flex justify-end p-1 md:p-5">&nbsp;&nbsp;Weatherly&nbsp;&nbsp;
+
+         </h1>
+         <section class="font-semibold md:flex gap-8 items-center" >
+            <p id="date" class="md:text-xl m-2 rounded-md mt-8 flex justify-between p-1 bg-sky-200 md:p-5">Date</p>
+            <p id="time" class="md:text-xl m-2 rounded-md mt-8 flex justify-between p-1 bg-sky-200 md:p-5">Time</p>
+         </section>
+   </header>
+
+   <!-- main body -->
+   <main class="lg:grid lg:grid-cols-1 text-center">
+         <!-- search with city or current location -->
+     <section class="card  flex  items-center m-4 justify-around" > 
+      <article class="text-center m-7 bg-gray-300 rounded-lg ml-8 mr-8 w-1/2 h-32 md:h-64 justify-around">
+         <p class="text-2xl mt-4 pt-8 font-bold md:text-4xl">Enter the city Name</p>
+          <form id="searchform" class="flex flex-col items-center justify-center min-w-40  max-w-sm min-h-screen">
+             <input type="search" id="cityName" class="mt-4 rounded-lg p-2  ml-24  w-1/2" placeholder="Enter City Here" name="search" list="cityList">
+             <datalist id="cityList">
+             </datalist>
+             <button type="submit" id="button1"  class="mt-4 rounded-lg p-2  ml-24  w-1/2  bg-violet-600  hover:bg-violet-900  font-bold hover:scale-105  text-white text-xl ">Search</button>
+             </form>
+          <p class="text-sm w-full  font-thin md:text-justify"> OR </p>
+          <button id="currentloc" class="mt-2 rounded-lg p-2  ml-24  w-1/2 bg-stone-400 hover:bg-stone-800 hover:text-white text-center  font-semibold md:p-2 " >Use My Current Location</button>
+           </article></section>   
+
+                
+            <!-- Display fetch data section -->
+            <div class="flex  items-center m-2 justify-around">
+               <article class="m-4 rounded-md mt-8 flex justify-between p-1 w-1/2 h-auto bg-sky-200 md:p-5 py-12">
+               <section class="ml-1 leading-8"  >
+                  <h2 id="location" class="text-base  font-bold md:text-2xl">London(2024-08-20)</h2>
+                  <p id="temprature" class="font-semibold md:text-lg">Temprature:7.06 <sup>0</sup>C</p>
+                  <p id="wind" class="font-semibold md:text-lg">Wind:2.83 m/s</p>
+                  <p id="humadity" class="font-semibold md:text-lg">Humidity:88%</p>
+               </section>
+               <section>
+                  <img id="image"  src="./public/images/sun-159378_640.webp"  width="100px" alt="weather image">
+                  <p id="currcondition" class="-mt-5 ml-auto">Condition</p>
+               </section>
+               
+              </article>
+            </div>
+         </main>
+
+              <!-- Next five day forecastsection-->
+              <div>
+   <article class="flex flex-col items-center">
+      <h1 class="text-2xl font-bold mt-5 md:text-4xl text-center">Next 3 Days Forecast</h1>
+      <article id="futureWeather" class="flex flex-col md:flex-row md:flex-wrap lg:flex-row lg:flex-wrap justify-center items-center mt-5">
+         <section class="bg-yellow-100 hover:scale-100 text-center mt-10 mx-14 mb-8 shadow-inner md:shadow-2xl shadow-grey-400/50 rounded-lg leading-8 p-2 md:mx-14 md:p-10 md:leading-10 lg:m-4 lg:p-2 lg:leading-4 flex flex-row justify-center items-center">
+            <p class="text-xl font-semibold md:text-2xl md:mt-2">Date(2024-08-21)</p>
+            <img src="../public/images/sun-159378_640.webp" class="my-2" width="80px" alt="weather image">
+            <p class="font-semibold md:text-lg">Temperature: 7.06 <sup>0</sup>C</p>
+            <p class="font-semibold md:text-lg">Wind: 2.83 m/s</p>
+            <p class="font-semibold md:text-lg">Humidity: 88%</p>
+         </section> 
+      </article>
+   </article>
+</div>
+
+
+  <!-- footer section--> 
+<footer class=" bg-sky-200 h-9 pt-4">
+<h1 class="text-center font-semibold mt-8">Copyright @ Madhumita 2024 (Weather Forecast)
+</h1>
+</footer>
+   
+  
+   
+   <script type="module" src="index.js"></script>
+   
+</body>
+</html>
